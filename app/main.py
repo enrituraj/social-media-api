@@ -64,7 +64,9 @@ def create_posts(new_post:Post):
 
 @app.get("/posts")
 def get_posts():
-    return {"data":my_posts}
+    cursor.execute(""" SELECT * FROM posts """)
+    posts = cursor.fetchall()
+    return {"data":posts}
 
 
 @app.get("/posts/latest")
